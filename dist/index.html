@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./noun-check-147799.svg">
+    <title>TodoList</title>
+  </head>
+  <body>
+    <div class="content">
+      <header>
+        <div class="logo">
+            ToDo List
+        </div>
+      </header>
+      <div class="sidebar">
+        <div class="inbox"><i class="fa-solid fa-inbox"></i> Inbox</div>
+        <div class="projects-container">
+          <div class="row">
+            <h2>My projects</h2>
+            <button class="add-project-btn">+</button>
+          </div>
+          <div class="projects-list"></div>
+          <div class="project-creator inactive">
+            <form>
+              <div class="input-box">
+                <input
+                  type="text"
+                  name="project-name"
+                  id="project-name"
+                  placeholder="Project name"
+                />
+              </div>
+              <div class="row">
+              <button type="button" class="submit-project">Add Project</button>
+              <button type="button" class="cancel-project">Cancel</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="board">
+        <div class="projects-container">
+          <div class="project-title">Inbox</div>
+          <div class="todo-container"></div>
+          <button class="add-todo-btn active"><span>+</span>Add Task</button>
+          <div class="todo-creator inactive">
+            <form>
+              <div class="input-box">
+                <input
+                  type="text"
+                  name="name"
+                  id="todo-name"
+                  placeholder="Task name"
+                  required
+                />
+              </div>
+              <div class="input-box">
+                <input
+                  type="text"
+                  name="description"
+                  id="description"
+                  placeholder="description"
+                />
+              </div>
+              <div class="row">
+                <div class="input-box date-box">
+                  <label for="due-date"
+                    >Due date
+                    <input type="date" name="due-date" id="due-date" />
+                  </label>
+                </div>
+                <div class="input-box color-box">
+                  <label for="color"
+                    >Color
+                    <input type="color" name="color" id="color" />
+                  </label>
+                </div>
+              </div>
+              <button type="button" class="submit-todo">Add Task</button>
+              <button type="button" class="cancel-todo">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/fb9e5b8419.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
