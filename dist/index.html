@@ -3,88 +3,177 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./noun-check-147799.svg">
-    <title>TodoList</title>
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="stylesheet" href="./meyerReset.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>TODO</title>
   </head>
   <body>
-    <div class="content">
-      <header>
-        <div class="logo">
-            ToDo List
-        </div>
-      </header>
-      <div class="sidebar">
-        <div class="inbox"><i class="fa-solid fa-inbox"></i> Inbox</div>
-        <div class="projects-container">
-          <div class="row">
-            <h2>My projects</h2>
-            <button class="add-project-btn">+</button>
-          </div>
-          <div class="projects-list"></div>
-          <div class="project-creator inactive">
-            <form>
-              <div class="input-box">
-                <input
-                  type="text"
-                  name="project-name"
-                  id="project-name"
-                  placeholder="Project name"
-                />
-              </div>
-              <div class="row">
-              <button type="button" class="submit-project">Add Project</button>
-              <button type="button" class="cancel-project">Cancel</button>
-            </div>
-            </form>
-          </div>
-        </div>
+    <div class="sidebar">
+      <div class="logo"><i class="fa-solid fa-check-double"></i>Todo</div>
+      <div class="default-projects">
+        <ul class="task-list" data-default-project></ul>
       </div>
-      <div class="board">
-        <div class="projects-container">
-          <div class="project-title">Inbox</div>
-          <div class="todo-container"></div>
-          <button class="add-todo-btn active"><span>+</span>Add Task</button>
-          <div class="todo-creator inactive">
-            <form>
-              <div class="input-box">
-                <input
-                  type="text"
-                  name="name"
-                  id="todo-name"
-                  placeholder="Task name"
-                  required
-                />
-              </div>
-              <div class="input-box">
-                <input
-                  type="text"
-                  name="description"
-                  id="description"
-                  placeholder="description"
-                />
-              </div>
-              <div class="row">
-                <div class="input-box date-box">
-                  <label for="due-date"
-                    >Due date
-                    <input type="date" name="due-date" id="due-date" />
-                  </label>
-                </div>
-                <div class="input-box color-box">
-                  <label for="color"
-                    >Color
-                    <input type="color" name="color" id="color" />
-                  </label>
-                </div>
-              </div>
-              <button type="button" class="submit-todo">Add Task</button>
-              <button type="button" class="cancel-todo">Cancel</button>
-            </form>
-          </div>
-        </div>
+      <div class="all-tasks">
+        <h2 class="task-list-title">My list</h2>
+        <ul class="task-list" data-project></ul>
+        <form action="" data-new-project-form>
+          <input
+            type="text"
+            name=""
+            data-new-project-input
+            id=""
+            class="new list"
+            placeholder="new list name"
+            aria-label="new list name"
+          />
+          <button class="btn create" aria-label="create new list">+</button>
+        </form>
       </div>
     </div>
+    <div class="todo-list" data-project-display-container>
+      <div class="todo-header">
+        <h2 class="list-title" data-project-title></h2>
+        <p class="task-count" data-project-count></p>
+      </div>
+      <div class="tasks" data-tasks></div>
+      <button class="open-task-creator-button"><span>+</span> Add task</button>
+
+      <div class="delete-stuff">
+        <button class="btn delete" data-clear-complete-tasks-button>
+          Clear completed tasks
+        </button>
+      </div>
+      <dialog class="todo-body">
+        <form action="" data-new-task-form>
+          <input
+            type="text"
+            class="new-task-title-input"
+            data-new-task-input
+            placeholder="new task name"
+            aria-label="new task name"
+          />
+          <fieldset data-new-task-priority>
+            <legend>Priority:</legend>
+            <label for="high" class="priority-label high"
+              >High
+              <input
+                type="radio"
+                name="priority"
+                id="high"
+                value="#ff0000"
+                checked
+              />
+            </label>
+            <label for="medium" class="priority-label medium"
+              >Medium
+              <input
+                type="radio"
+                name="priority"
+                id="medium"
+                value="#ffbb00f5"
+              />
+            </label>
+            <label for="low" class="priority-label low"
+              >Low
+              <input type="radio" name="priority" id="low" value="#0000ff" />
+            </label>
+          </fieldset>
+          <div class="row">
+            <label for="due-date">
+              Due date:
+              <input
+                type="date"
+                name="due-date"
+                value="2024-01-31"
+                id="due-date"
+                aria-label="new task due date"
+                data-new-task-due-date
+              />
+            </label>
+            <button class="btn-create" aria-label="create new task">
+              SUBMIT
+            </button>
+          </div>
+          <div class="btn-close-task-creator" aria-label="close new task">
+            ✖
+          </div>
+        </form>
+      </dialog>
+      <dialog class="modifier-task">
+        <form action="" data-modifier-task-form>
+          <input
+            type="text"
+            name="priority"
+            class="new-task-title-input"
+            data-modifier-task-name
+            placeholder="new task name"
+            aria-label="new task name"
+          />
+          <fieldset data-modifier-task-priority>
+            <legend>Priority:</legend>
+            <label for="high" class="priority-label high"
+              >High
+              <input type="radio" name="priority" id="high" value="#ff0000" />
+            </label>
+            <label for="medium" class="priority-label medium"
+              >Medium
+              <input type="radio" name="priority" id="medium" value="#ffff00" />
+            </label>
+            <label for="low" class="priority-label low"
+              >Low
+              <input type="radio" name="priority" id="low" value="#0000ff" />
+            </label>
+          </fieldset>
+          <div class="row">
+            <label for="due-date">
+              Due date:
+              <input
+                type="date"
+                name="due-date"
+                value="2024-01-31"
+                id="due-date"
+                aria-label="new task due date"
+                data-modifier-task-due-date
+              />
+            </label>
+            <button
+              class="btn-create"
+              aria-label="modify new task"
+              data-modify-task-button
+            >
+              CONFIRM EDIT
+            </button>
+          </div>
+          <div
+            class="btn-close"
+            aria-label="close new task"
+            data-close-task-modifier-button
+          >
+            ✖
+          </div>
+        </form>
+      </dialog>
+    </div>
+
+    <template id="task-template">
+      <div class="task">
+        <input type="checkbox" />
+        <label>
+          <span class="custom-checkbox"></span>
+          <span class="task-info">
+            <div class="title"></div>
+            <div class="dueDate"></div>
+          </span>
+        </label>
+        <div class="edit-icons">
+          <i class="fa-solid fa-pen-to-square edit-task-icon"></i>
+          <i class="fa-solid fa-xmark delete-task-icon"></i>
+        </div>
+      </div>
+    </template>
     <script src="./main.js"></script>
+
     <script
       src="https://kit.fontawesome.com/fb9e5b8419.js"
       crossorigin="anonymous"

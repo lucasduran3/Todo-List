@@ -1,0 +1,464 @@
+@font-face {
+  font-family: "Poppins";
+  src: url(./Poppins.ttf);
+}
+
+:root {
+  --clr-primary: rgb(54, 112, 199);
+  --clr-light: #f4f4f4;
+  --clr-dark: #333;
+  --clr-warning: rgb(99, 36, 36);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--clr-light);
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.sidebar {
+  padding: 20px;
+  background-color: var(--clr-primary);
+  grid-column: 1/2;
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  gap: 2.7em;
+}
+
+.logo {
+  font-family: "Work Sans", sans-serif;
+  font-size: calc(0.8vw + 2rem);
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.185);
+  letter-spacing: 2px;
+}
+
+.task-list {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  padding-left: 1.1em;
+}
+
+.project-name {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.project-name:hover {
+  opacity: 0.7;
+}
+
+form {
+  display: flex;
+}
+
+.btn {
+  cursor: pointer;
+  background: 0;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+.btn.create {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-right: 0.25em;
+  transition: opacity 250ms ease-in;
+}
+
+.btn.create:hover {
+  opacity: 0.7;
+}
+
+.delete-project-btn {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--clr-light);
+  cursor: pointer;
+}
+
+.btn.delete {
+  opacity: 0.7;
+  font-size: 1rem;
+  transition: color 200ms;
+}
+
+.btn.delete:hover {
+  color: var(--clr-warning);
+}
+
+.new {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  font-size: inherit;
+  outline: none;
+  padding: 0.25em;
+  transition: border-bottom 150ms ease-in;
+  order: 2;
+}
+
+.new::-webkit-input-placeholder {
+  opacity: 0.2;
+}
+
+.new:-ms-input-placeholder {
+  opacity: 0.4;
+}
+
+.new::-ms-input-placeholder {
+  opacity: 0.4;
+}
+
+.new::placeholder {
+  color: rgb(255, 255, 255);
+  opacity: 0.4;
+  font-style: italic;
+}
+
+.new:focus {
+  border-bottom-width: 3px;
+}
+
+.new:focus::-webkit-input-placeholder {
+  opacity: 0.15;
+}
+
+.new:focus:-ms-input-placeholder {
+  opacity: 0.15;
+}
+
+.new:focus::-ms-input-placeholder {
+  opacity: 0.15;
+}
+
+.new:focus::placeholder {
+  opacity: 0.15;
+}
+
+.new.list {
+  font-size: 1.1rem;
+}
+
+.new.task {
+  margin-bottom: 0;
+}
+
+.active-project {
+  font-weight: bold;
+}
+
+.todo-list {
+  --spacer: 2rem;
+  grid-column: 2/3;
+  grid-row: 1/3;
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-header {
+  padding: var(--spacer);
+  background: #e4e4e4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-title {
+  margin: 0 1em 0 0;
+  font-weight: bold;
+}
+
+.task-count {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.open-task-creator-button {
+  margin: 25px 0;
+  align-self: center;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.open-task-creator-button span {
+  color: #ff0000;
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+.open-task-creator-button:hover {
+  opacity: 0.7;
+}
+
+dialog {
+  left: 289px;
+  width: 35%;
+  height: 30%;
+  padding: var(--spacer);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 20px #333;
+  background-color: #ffffff;
+}
+
+dialog form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+dialog form .new-task-title-input {
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  font-size: 1.5rem;
+  font-family: "Poppins";
+}
+
+dialog form .new-task-title-input::placeholder {
+  font-style: italic;
+}
+
+dialog form .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+dialog form fieldset {
+  display: flex;
+  gap: 2rem;
+}
+
+dialog form label,
+legend {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+fieldset .priority-label {
+  background: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.priority-label.high {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+.priority-label.high:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+.priority-label.medium {
+  border-color: #ffbb00f5;
+  color: #ffbb00f5;
+}
+
+.priority-label.medium:hover {
+  background-color: #ffbb00f5;
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+.priority-label.low {
+  border-color: #0000ff;
+  color: #0000ff;
+}
+
+.priority-label.low:hover {
+  background-color: #0000ff;
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+dialog form .row input[type="date"] {
+  background: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #000;
+}
+
+.btn-close-task-creator,
+.btn-close {
+  position: absolute;
+  background: transparent;
+  font-size: 1.5rem;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.btn-create {
+  background: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid rgb(0, 199, 133);
+  color: rgb(0, 199, 133);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-create:hover {
+  background-color: rgb(0, 199, 133);
+  color: #fff;
+  transition: all 0.3s;
+}
+
+[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  border: 2px solid transparent;
+}
+
+.tasks {
+  width: 60%;
+  align-self: center;
+}
+
+.task {
+  padding: 25px;
+  position: relative;
+  margin-bottom: 1.25em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.task label .task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.task label .dueDate {
+  font-size: 1rem;
+  color: #858585;
+}
+
+.task .edit-icons {
+  display: flex;
+  gap: 30px;
+}
+
+.task .edit-icons i {
+  cursor: pointer;
+}
+
+.task::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -0.5em;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.1;
+}
+
+.custom-checkbox {
+  --size: 0.75em;
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  margin-right: var(--size);
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.task:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  color: var(--clr-primary);
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  box-shadow: inset 0 0 0px 2px white;
+}
+
+[type="checkbox"]:checked + label {
+  opacity: 0.5;
+}
+
+.task label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  left: 1.5em;
+  top: 25%;
+  height: 3px;
+  background: currentColor;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: right;
+  transform-origin: right;
+  transition: -webkit-transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.delete-stuff {
+  color: #b92727;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  left: 0;
+  bottom: -35px;
+}
